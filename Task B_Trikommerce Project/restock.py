@@ -15,7 +15,20 @@ Function Output:
 available_items:(integer) This function returns this integer which updates the available items at the current day.
 
 
-The function will also update the inventory_records (For restocking) for a  given current day. It will also return "available_items".
+The function will also update the inventory_records (For restocking) for a given current day. It will also return "available_items".
     '''
-
+    restocked_items = 0
+    sales = 0
+    if (available_items < 2000 and current_day%7==0):
+        restocked_items = 2000 - available_items
+        #day,sales,restocked_items,available_items
+        inventory_records.append(current_day)
+        inventory_records.append(sales)
+        inventory_records.append(restocked_items)
+        if available_items + restocked_items == 2000:
+            available_items = 2000
+            inventory_records.append(available_items)
+        else:
+            raise ValueError("Available items + restocked items is not equal to 2000")
+        
     return available_items
