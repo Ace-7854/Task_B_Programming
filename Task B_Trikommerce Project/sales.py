@@ -20,9 +20,9 @@ The function will also update the inventory_records (For restocking) for a  give
 
     '''
     if (current_day%7 != 0):
-        sales = random.randint(0,200)
+        sales = random.randint(0,200) # a random number of sales is passed
         #day,sales,restocked_items,available_items
-        available_items -= sales
-        inventory_records.append([current_day,sales,0,available_items])
+        available_items -= sales # the number of available items drops as sales are done 
+        inventory_records.append([current_day,sales,0,available_items]) # a record for a sales day
 
     return available_items

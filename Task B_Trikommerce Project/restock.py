@@ -18,18 +18,18 @@ available_items:(integer) This function returns this integer which updates the a
 The function will also update the inventory_records (For restocking) for a given current day. It will also return "available_items".
     '''
 
-    if (current_day%7==0 and current_day != 0):
-        restocked_items = 2000
-        restocked_items -= available_items
-        sales = 0
-        available_items = 2000        
+    if (current_day%7==0 and current_day != 0): # if day is the seventh day and not 0
+        restocked_items = 2000 # restocked items is equal to 2000
+        restocked_items -= available_items # restocked items is the equivilent to 2000 - available items which gives us the items required for restock
+        sales = 0 # no sales are done on seventh day
+        available_items = 2000 # as of restock, availble units become 2000 
         #day,sales,restocked_items,available_items
-        inventory_records.append([current_day, sales, restocked_items,available_items])
-    elif(current_day == 0):
-        restocked_items = 2000
-        available_items = 2000
-        sales = 0
+        inventory_records.append([current_day, sales, restocked_items,available_items])# a record of inventory for x day
+    elif(current_day == 0): # if the current day is 0, we fully restock
+        restocked_items = 2000 # we fully stocked
+        available_items = 2000 # available items is the maximum stock
+        sales = 0 # no sales committed
         #day,sales,restocked_items,available_items
-        inventory_records.append([current_day,sales,restocked_items,available_items])
+        inventory_records.append([current_day,sales,restocked_items,available_items]) # a record of inventory for x day
         
     return available_items
